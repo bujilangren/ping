@@ -3,6 +3,8 @@ import time
 import importlib
 import os.path
 import sys
+from tkinter import Tk, filedialog
+from concurrent.futures import ThreadPoolExecutor
 
 # 检查并安装所需的库
 libraries = ["subprocess", "time", "importlib", "os.path", "sys", "tkinter", "concurrent.futures"]
@@ -13,9 +15,6 @@ for library in libraries:
         print(f"未找到{library}库，正在安装...")
         subprocess.run(["pip", "install", library])
         print(f"{library}库安装完成！")
-
-from tkinter import Tk, filedialog
-from concurrent.futures import ThreadPoolExecutor
 
 output_file = f"ip已通_{time.strftime('%Y%m%d%H%M%S')}.csv"
 failed_file = f"ip不通_{time.strftime('%Y%m%d%H%M%S')}.csv"
@@ -29,7 +28,7 @@ root = Tk()
 root.withdraw()  # 隐藏根窗口
 
 # 提示用户选择txt文件
-print("这是浪人的小屋折腾的批量ping ip或域名的脚本，谢谢您的支持！请选择你需要ping的txt文件，谢谢")
+print("这是浪人的小屋折腾的批量ping ip或域名的脚本，谢谢您的支持！请选择您需要ping的txt文件，谢谢")
 
 # 获取文件目录
 initial_dir = os.path.dirname(os.path.abspath(__file__))
